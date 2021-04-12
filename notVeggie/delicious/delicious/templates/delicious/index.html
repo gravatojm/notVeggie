@@ -1,0 +1,776 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chiiiiiicken Wiiiiiings</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords"
+          content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.css"/>
+    <!-- =======================================================
+        Theme Name: Delicious
+        Theme URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
+        Author: BootstrapMade.com
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script>var userType = "";
+    var loggedin = false;
+    </script>
+</head>
+<body>
+
+<!-- hidden fields to store modal result in -->
+<input type="hidden" id="main-username">
+<input type="hidden" id="main-password">
+<input type="hidden" id="main-result">
+<input type="hidden" id="main-phone"/>
+<input type="hidden" id="main-name" />
+
+<!--banner-->
+<section id="banner">
+    <div class="bg-color">
+        <header id="header">
+            <div id="onTop" class="container">
+
+                <!-- Button to open the modal login form -->
+                <button id="mainlog" class="login-button box follow-scroll" data-toggle="modal" data-target="#myModal">Login</button>
+                <button id="signup" class="register-button box follow-scroll" data-toggle="modal" data-target="#myModal1">Sign up</button>
+                <!-- The Modal -->
+                <div id="myModal" class="modal fade" role="dialog" data-backdrop="false">
+                    <div class="modal-dialog">
+                        <!-- Modal Content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Authentication</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="authentication-form">
+                                    <div class="form-group">
+                                        <label for="usrname">Username</label>
+                                        <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="psw">Password</label>
+                                        <input type="password" class="form-control" id="psw"
+                                               placeholder="Enter password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sign in with</label>
+                                        <p></p>
+                                        <img src="http://i.imgur.com/w2zSzc9.png" alt="Smiley face" height="40"
+                                             width="40">
+                                        <img src="http://i.imgur.com/l3UFv5S.png" alt="Smiley face" height="40"
+                                             width="40">
+                                        <img src="http://i.imgur.com/SvtHiWj.png" alt="Smiley face" height="40"
+                                             width="40">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="" checked>Remember me</label>
+                                    </div>
+                                    <button id="log" type="submit" data-dismiss="modal"
+                                            class="btn btn-success btn-block">Login
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal1" class="modal fade" role="dialog" data-backdrop="false">
+                    <div class="modal-dialog">
+                        <!-- Modal Content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Sign up</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form name="authentication-form">
+                                    <div class="form-group">
+                                        <label for="usrname">Email</label>
+                                        <input type="text" class="form-control" id="usrname1" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="psw1">Password</label>
+                                        <input type="password" class="form-control" id="psw1"
+                                               placeholder="Enter password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="psw1">Password</label>
+                                        <input type="password" class="form-control" id="psw1conf"
+                                               placeholder="Confirm password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Register with</label>
+                                        <p></p>
+                                        <img src="http://i.imgur.com/w2zSzc9.png" alt="Smiley face" height="40"
+                                             width="40">
+                                        <img src="http://i.imgur.com/l3UFv5S.png" alt="Smiley face" height="40"
+                                             width="40">
+                                        <img src="http://i.imgur.com/SvtHiWj.png" alt="Smiley face" height="40"
+                                             width="40">
+                                    </div>
+                                    <button id="log1" type="submit"
+                                            class="btn btn-success btn-block">
+                                        Register
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#about">About</a>
+                    <a href="#event" class="eventBtn">Event</a>
+                    <a id="menubtt" href="#menu">Menu</a>
+                    <hr id="barrita" />
+                    <a id="adminopt1" href="#reservations">Reservations</a>
+                    <a id="cliopt1" href="#contact">Book a table</a>
+                    <hr id="barrita1" />
+                    <a id="settings1" href="#user-account-settings">Settings</a>
+                    <a onclick="Myfunction()" id="logout" href="#">Log out</a>
+                    <a onclick="Myfunction1()" id="logout1" href="#">Log out</a>'
+                </div>
+                <!-- Use any element to open the sidenav -->
+                <span onclick="openNav()" class="pull-right menu-icon">☰</span>
+            </div>
+        </header>
+        <div class="container">
+            <div id="banner-text" class="row">
+                <div class="inner text-center">
+                    <h1 class="logo-name">!Veggie</h1>
+                    <h2>Food To fit your chicken & wings. #!veggie</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / banner -->
+<!--about-->
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center marb-35">
+                <h1 class="header-h">Meatyc Journey</h1>
+                <p class="header-p"> Give us the chance to succeed, we will give you an experience.
+                </p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-info">
+                        <h2 class="heading">Chicken Wings</h2>
+                        <p>Come and taste our super hot, super trendy, and super cheap Chicken Wings</p>
+                        <div class="details-list">
+                            <ul>
+                                <li><i class="fa fa-check"></i>Vegetarian Chicken Wings (not)
+                                </li>
+                                <li><i class="fa fa-check"></i>Pork Chicken Wings</li>
+                                <li><i class="fa fa-check"></i>Calf Chicken Wings</li>
+                                <li><i class="fa fa-check"></i>and much more to expect... like Chicken Chicken Wings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img src="img/res01.jpg" alt="" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+<!--/about-->
+<!-- event -->
+<section id="event">
+
+</section>
+
+<!-- event normal -->
+<section id="event-normal">
+    <div class="bg-color" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center" style="padding:60px;">
+                    <h1 class="header-h">Up Coming events</h1>
+                    <p class="header-p">Decorations 100% complete here</p>
+                </div>
+                <div class="col-md-12" style="padding-bottom:60px;">
+                    <div class="item active left">
+                        <div class="col-md-6 col-sm-6 left-images">
+                            <img src="img/rest.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-6 col-sm-6 details-text">
+                            <div class="content-holder">
+                                <h2>Joyful party</h2>
+                                <p>Free chicken wings for everybody that shows up 30 minutes before the event starts.. to build up the decorations.</p>
+                                <address>
+                                    <strong>Place: </strong>
+                                    Electronic and Telecommunications Department of the University of Aveiro, Amph. IV
+                                    <br>
+                                    <strong>Time: </strong>
+                                    19:30
+                                </address>
+                                <button type="button" id="event-normal-btn" class="btn btn-imfo btn-read-more">Read more</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<!--/ event normal -->
+<!-- event read more -->
+<section id="event-readmore">
+    <div class="bg-color" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center" style="padding:60px;">
+                    <h1 class="header-h">Joyful Party</h1>
+                </div>
+                <div class="col-md-12" style="padding-bottom:60px;">
+                    <div class="item active left">
+                        <div class="col-md-12 col-sm-12 details-text">
+                            <div class="content-holder">
+                                <h2>What is happening?</h2>
+                                <p>
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts.. to build up the decorations.
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts.. to build up the decorations.
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts.. to build up the decorations.
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts.. to build up the decorations.
+                                </p>
+                                <h2>Where is it?</h2>
+                                <p>Electronic and Telecommunications Department of the University of Aveiro, Amph. IV</p>
+                                <h2>When is it?</h2>
+                                <p>Next Saturday, 7th April, at 19h30</p>
+                                <button type="button" id="readmore-btn" class="btn btn-imfo btn-read-more" align="right">Ok</button>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<!-- / event read more -->
+<!-- / event -->
+
+<!-- menu -->
+    <section id="menu" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center marb-35">
+                    <h1 class="header-h">Menu List</h1>
+                    <p class="header-p">
+                        Chicken Wings from all types of meat.
+                    </p>
+                    <h4 id="client-discount-text" align="center"></h4>
+                </div>
+            </div>
+            <div id="menulist" class="row">
+            
+            </div>
+        </div>
+    </section>
+<!--/ menu -->
+<!-- contact -->
+<section id="contact" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="header-h">Book Your table</h1>
+                <p class="header-p">You don't need this but it's ok.
+                    <br>we are always empty. </p>
+            </div>
+        </div>
+        <div class="row msg-row">
+            <div class="col-md-12 col-sm-12">
+                <form class="contactForm">
+                    <div class="col-md-4 form-group">
+                        <label for="day-input">Day</label>
+                        <input type="date" name="criar_reserva_data" class="form-control" id="day-input" placeholder="" data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="time-input">Hour</label>
+                        <input type="time" name="criar_reserva_hora" class="form-control" id="time-input" data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="seats-input">Seats</label>
+                        <input type="number" name="criar_reserva_n_lugares" class="form-control" id="seats-input" data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="seats-input">Contacto</label>
+                        <input type="number" name="criar_reserva_contacto" class="form-control" data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-12 contact-form">
+                        <label for="message-input">Message</label>
+                            <textarea class="form-control" name="message" id="message-input" rows="3" data-rule="required"
+                                      data-msg="Please write something for us" placeholder="Please write something for us"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 btnpad" align="right">
+                            <button type="button" id="confirm-reservation-btn" class="btn btn-success btn-lg" data-toggle="modal" data-target="#confirm-reservation-modal">Confirm</button>
+                            <button type="button" id="cancel-reservation-btn" class="btn btn-warning btn-lg">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / contact -->
+<!-- reservations -->
+<section id="reservations" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="header-h">Reservations</h1>
+            </div>
+        </div>
+        <div class="row msg-row">
+            <table id="reservations-table" class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Hour</th>
+                        <th>Num. Seats</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!-- / reservations -->
+<!-- dados de utilizador -->
+<section id="user-account-settings" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="header-h">Account Settings</h1>
+                    <p class="header-p">
+                        Change your account settings.
+                    </p>
+                </div>
+            </div>
+            <div class="row msg-row">
+                <form>
+                    <div class="col-md-6 form-group">
+                        <label for="changeEmailAddress">Email Address</label>
+                        <input type="email" class="form-control" id="changeEmailAddress" placeholder="" disabled />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="changePassword">Password</label>
+                        <input type="password" class="form-control" id="changePassword" disabled />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="changeName">Name</label>
+                        <input type="text" class="form-control" id="changeName" disabled />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="changePhone">Phone</label>
+                        <input type="tel" class="form-control" id="changePhone" disabled />
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-12 btnpad" align="right">
+                    <button id="dados-confirmar-btn" class="btn btn-success btn-lg">Confirmar</button>
+                    <button id="dados-anular-btn" class="btn btn-warning btn-lg">Anular</button>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- / dados de utilizador -->
+<!-- footer -->
+<footer class="footer text-center">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="media-2">
+                        <div class="media-left">
+                            <div class="contact-phone bg-1 text-center">
+                                <span class="phone-in-talk fa fa-phone"></span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="dark-blue regular">Phone Number</h4>
+                            <p class="light-blue regular alt-p">
+                                234 000 000
+                            </p>
+                        </div>
+                    </div>
+                    <div class="media-2">
+                        <div class="media-left">
+                            <div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span></div>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="dark-blue regular">Opening Hours</h4>
+                            <p class="light-blue regular alt-p"> Monday to Thursday 09.00 - 24:00</p>
+                            <p class="light-blue regular alt-p">
+                                Friday and Sunday 10:00 - 01.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 text-center">
+                    <div class="widget">
+                        <h4 class="widget-title">!Veggie</h4>
+                        <address>Departamento de Electrónica, Telecomunicações e Informática<br>Aveiro, Portugal</address>
+                        <div class="social-list">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- / footer -->
+
+<div class="modal fade" id="confirm-reservation-modal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Your Reservation</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                    <label for="confirm-reservation-modal-day" class="col-form-label">Day</label>
+                    <div class="">
+                        <p id="confirm-reservation-modal-day" class="form-control-static"></p>
+                    </div>
+                    <label for="confirm-reservation-modal-hour" class="col-form-label">Hour</label>
+                    <div class="">
+                        <p id="confirm-reservation-modal-hour" class="form-control-static"></p>
+                    </div>
+                    <label for="confirm-reservation-modal-seats" class="col-form-label">Seats</label>
+                    <div class="">
+                        <p id="confirm-reservation-modal-seats" class="form-control-static"></p>
+                    </div>
+                    <label for="confirm-reservation-modal-message" class="col-form-label">Message</label>
+                    <div class="">
+                        <p id="confirm-reservation-modal-message" class="form-control-static"></p>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        getMenuData();
+        switchEventContentToNormal();
+        $("section#contact").hide();
+        $("section#user-account-settings").hide();
+        $("section#reservations").hide();
+        $("#event-normal").hide();
+        $("#event-readmore").hide();
+        $("#barrita").hide();
+        $("#adminopt1").hide();
+        $("#cliopt1").hide();
+        $("#barrita1").hide();
+        $("#logout").hide();
+        $("#logout1").hide();
+        $("#settings1").hide();
+    });
+
+    //Confirmar se password e confirmação sao iguais.
+
+    $(document).on("click", "#log1", function () {
+        var pw = document.getElementById("psw1").value.toString();
+        var pwconf = document.getElementById("psw1conf").value.toString();
+        if (pw != pwconf) {
+            alert("Passwords are different. User wasn't created.");
+        }
+    });
+
+    $(document).on("click", "#log", function (event) {
+        $("#main-username").val($("#usrname").val());
+        $("#main-password").val($("#psw").val());
+        if (loggedin) {
+            alert("You're already logged in. Logout to be able to login again.");
+        }
+        else {
+            userType = document.getElementById("main-username").value.toString();
+            var userPass = document.getElementById("main-password").value.toString();
+        }
+
+
+        if (userType == "admin" && userPass == "password" && !loggedin) {
+
+            $("#barrita").show();
+            $("#adminopt1").show();
+            $("#barrita1").show();
+            $("#logout").show();
+
+            $("section#menu").show();
+            $("section#reservations").show();
+            getReservationsData();
+            openNav();
+            loggedin = true;
+
+            $("#signup").hide();
+            $("#mainlog").hide();
+
+        } else if (userType == "client@mail.com" && userPass == "password" && !loggedin) {
+
+            $("#barrita").show();
+            $("#cliopt1").show();
+            $("#barrita1").show();
+            $("#settings1").show();
+            $("#logout1").show();
+
+            setUserDiscount();
+            getUserData();
+            $("section#menu").show();
+            $("section#contact").show();
+            $("section#user-account-settings").show();
+            
+            openNav();
+            loggedin = true;
+
+            $("#signup").hide();
+            $("#mainlog").hide();
+        } else {
+            alert("Erro no login - user desconhecido")
+        }
+
+    });
+
+    $('#bookbtt').click(function () {
+        if(!loggedin)
+        alert("Must be logged in.")
+    });
+
+    $(document).on("click", "#event-normal-btn", function (event) {
+        switchEventContentToReadmore();
+    });
+
+    $(document).on("click", "#readmore-btn", function (event) {
+        switchEventContentToNormal();
+    });
+
+    var modal = document.getElementById('myModal');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+    function Myfunction() {
+        $(document).ready(function () {
+            $("#adminopt1").hide();
+            $("#adminopt2").hide();
+            $("#settings").hide();
+            $("#barrita").hide();
+            $("#barrita1").hide();
+            $("#logout").hide();
+            userType = "";
+            $("section#contact").hide();
+            $("section#reservations").hide();
+            removeReservationsData();
+            loggedin = false;
+            $("#signup").show();
+            $("#mainlog").show();
+        });
+    }
+
+    function Myfunction1() {
+        $("#cliopt1").hide();
+        $("#cliopt2").hide();
+        $("#settings1").hide();
+        $("#barrita1").hide();
+        $("#barrita").hide();
+        $("#logout1").hide();
+        userType = "";
+        $("section#contact").hide();
+        $("section#user-account-settings").hide();
+        loggedin = false;
+        removeUserDiscount();
+        $("#signup").show();
+        $("#mainlog").show();
+    }
+
+    $("#confirm-reservation-btn").click(function () {
+        var day = document.getElementById("day-input").value.toString();
+        var hour = document.getElementById("time-input").value.toString();
+        var seats = document.getElementById("seats-input").value.toString();
+        var message = document.getElementById("message-input").value.toString();
+
+        $("#confirm-reservation-modal-day").text(day);
+        $("#confirm-reservation-modal-hour").text(hour);
+        $("#confirm-reservation-modal-seats").text(seats);
+        $("#confirm-reservation-modal-message").text(message);
+        $("#confirm-reservation-modal").dialog();
+    })
+
+    function getUserData(username) {
+        var dataURL = "data/clients.json";
+        // var data = $.ajax({
+        $.ajax({
+            url: dataURL,
+            type: "GET",
+            dataType: "json",
+            success: processUserDataJson,
+            error: processDataJsonError
+        });
+    }
+
+    function processUserDataJson(result, status, xhr) {
+        var clientsArray = result.clients;
+        for (var i = 0; i < clientsArray.length; i++) {
+            if (clientsArray[i].email == "client@mail.com") {
+                $("#changeEmailAddress").val(clientsArray[i].email);
+                $("#changeName").val(clientsArray[i].name);
+                $("#changePhone").val(clientsArray[i].phone)
+            }
+        }
+    }
+
+    function getReservationsData() {
+        var dataURL = "data/data.json";
+        // var data = $.ajax({
+        $.ajax({
+            url: dataURL,
+            type: "GET",
+            dataType: "json",
+            success: processReservationsDataJson,
+            error: processDataJsonError
+        });
+    }
+
+    function processReservationsDataJson(result, status, xhr) {
+        var resArray = result.reservations;
+        for(var i = 0; i < resArray.length; i++) {
+            var day = resArray[i].day;
+            var hour = resArray[i].hour;
+            var seats = resArray[i].seats;
+            var name = resArray[i].name;
+            var contact = resArray[i].contact;
+            $('#reservations-table > tbody:last-child').append('<tr><td>'+ day +'</td><td>' + hour + '</td><td>' + seats + '</td><td>' + name + '</td><td>' + contact + '</td></tr>');
+        }
+        
+    }
+
+    // Apaga dados da tablea das reservas
+
+    function removeReservationsData() {
+        $('#reservations-table tr').remove();
+    }
+
+    function getMenuData() {
+        var dataURL = "data/menu.json";
+        // var data = $.ajax({
+        $.ajax({
+            url: dataURL,
+            type: "GET",
+            dataType: "json",
+            success: processMenuDataJson,
+            error: processDataJsonError
+        });
+    }
+
+    function processMenuDataJson(result, status, xhr) {
+        var menuArray = result.item;
+        for (var i = 0; i < menuArray.length; i++) {
+            var name = menuArray[i].name;
+            var price = menuArray[i].price;
+            $("#menulist").append('<div class="col-sm-6"><span class="clearfix"><span class="menu-title">' + name + '</span><span id="price" style="padding-left:10em" class="menu-price">$</span><span id="price" class="item-price">' + price + '</span></span></div>');
+        }
+
+    }
+
+    function processDataJsonError(xhr, status, errorThrown) {
+        alert("Error loading json");
+    }
+
+    // Altera os preços dos menu itens conforme desconto de cliente
+
+    function setUserDiscount() {
+        $("#client-discount-text").text("Special discounts just for you")
+        var newPrice = (14.99 - 3);
+        $("#menulist .item-price").each(function () {
+            $(this).text(newPrice);
+        })
+    }
+
+    function removeUserDiscount() {
+        $("#client-discount-text").remove();
+        $("#menulist .item-price").each(function () {
+            $(this).text("14.99");
+        })
+    }
+
+    // Altera o conteudo da section Event para o normal
+
+    function switchEventContentToNormal() {
+        var content = $("#event-normal").html();
+        $("#event").empty();
+        $("#event").append(content);
+    }
+
+    // Altera o conteudo da section Event para uma vista personalizada do evento em questão
+
+    function switchEventContentToReadmore() {
+        var content = $("#event-readmore").html();
+        $("#event").empty();
+        $("#event").append(content);
+    }
+
+
+    (function ($) {
+        var element = $('.follow-scroll'),
+            originalY = element.offset().top;
+
+        // Space between element and top of screen (when scrolling)
+        var topMargin = 20;
+
+        // Should probably be set in CSS; but here just for emphasis
+        element.css('position', 'relative');
+
+        $(window).on('scroll', function (event) {
+            var scrollTop = $(window).scrollTop();
+
+            element.stop(false, false).animate({
+                top: scrollTop < originalY
+                    ? 0
+                    : scrollTop - originalY + topMargin
+            }, 300);
+        });
+    })(jQuery);
+</script>
+
+
+</body>
+</html>

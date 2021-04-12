@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div class="col-sm-6 col-sm-offset-3">
+    <h1>Login</h1>
+    {% if erro %}
+        <p style="color:red;">ERRO: Username ou password errados.</p>
+        <p style="color:red;">Já tem conta? Faça o seu <a href="{% url 'registo' %}">Registo</a> agora!</p>
+    {% endif %}
+     <form method="POST" action="">
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="login_username">
+        <br><br>
+        <label>Password:</label>
+        <input type="text" name="login_password">
+        <br><br>
+        <input type="submit" class="btn btn-success" value="Login"/>
+        <input type="submit" class="btn btn-success" value="Cancelar"/>
+    </form>
+</div>
+</body>
+</html>

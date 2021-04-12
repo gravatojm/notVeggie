@@ -1,0 +1,20 @@
+{% extends './cliente.html' %}
+
+{% block titulo %} Cliente {% endblock %}
+
+{% block login %} {% endblock %}
+{% block registo %} {% endblock %}
+{% block menu %} {% endblock %}
+
+{% block body %}
+<h1>Criar Reserva</h1>
+<p>Reservado com sucesso</p>
+<p>Data: {{ data }}</p>
+<p>Hora: {{ hora }}</p>
+<p>n_lugares: {{ n_lugares }}</p>
+<p>nome_cliente: {{ nome_cliente }}</p>
+<p>contacto: {{ contacto }}</p>
+<form action="criarreserva.html">
+    <input type="submit" value="OK"/>
+</form>
+{% endblock %}

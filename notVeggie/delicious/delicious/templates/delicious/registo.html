@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registo</title>
+</head>
+<body>
+<div class="container">
+    <h1>Registo</h1>
+    {% if erro_username %}
+        <p style="color:red;">ERRO: Username já existe.</p>
+    {% endif %}
+    {% if erro_password %}
+        <p style="color:red;">ERRO: Passwords diferentes.</p>
+    {% endif %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="registo_username">
+        <br><br>
+        <label>Email:</label>
+        <input type="text" name="registo_email">
+        <br><br>
+        <label>Password:</label>
+        <input type="text" name="registo_password">
+        <br><br>
+        <label>Confirmar Password:</label>
+        <input type="text" name="registo_confirmar_password">
+        <br><br>
+        <input type="submit" class="btn btn-success" value="Registar"/>
+        <input type="submit" class="btn btn-success" value="Cancelar"/>
+    </form>
+</div>
+</body>
+</html>

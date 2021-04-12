@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}!Veggie{% endblock %}</title>
+    {% load staticfiles %}
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords"
+          content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'js/jquery-ui-1.12.1/jquery-ui.css' %}"/>
+    <!-- =======================================================
+        Theme Name: Delicious
+        Theme URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
+        Author: BootstrapMade.com
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>var userType = "";
+    var loggedin = false;
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+<!-- hidden fields to store modal result in -->
+<input type="hidden" id="main-username">
+<input type="hidden" id="main-password">
+<input type="hidden" id="main-result">
+<input type="hidden" id="main-phone"/>
+<input type="hidden" id="main-name"/>
+
+{% block banner %}
+<!--banner-->
+<section id="banner">
+    <div class="bg-color">
+        <header id="header">
+            <div id="onTop" class="container">
+
+                <!-- Button to open the modal login form -->
+                <button id="mainlog" class="login-button box follow-scroll" data-toggle="modal" data-target="#myModal">
+                    Login
+                </button>
+                <button id="signup" class="register-button box follow-scroll" data-toggle="modal"
+                        data-target="#myModal1">Sign up
+                </button>
+                {% block banner_modals %}
+                <!-- The Modal -->
+                <div id="myModal" class="modal fade" role="dialog" data-backdrop="false">
+                    <div class="modal-dialog">
+                        <!-- Modal Content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Authentication</h4>
+                            </div>
+                            <div class="modal-body">
+                                {% if erro_login %}
+                                <p style="color:red;">ERRO: Username ou password errados.</p>
+                                <p style="color:red;">Já tem conta? Faça o seu <a href="#" onclick="openSignupModal()">Registo</a>
+                                    agora!</p>
+                                {% endif %}
+                                <form method="POST" action="{% url 'base' %}">
+                                    {% csrf_token %}
+                                    <label>Username:</label>
+                                    <input type="text" name="login_username">
+                                    <br><br>
+                                    <label>Password:</label>
+                                    <input type="password" name="login_password">
+                                    <br><br>
+                                    <input id="submit_login" type="submit" class="btn btn-success" value="Login"/>
+                                    <a class="btn btn-danger" href="{% url 'index' %}">Cancelar</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal1" class="modal fade" role="dialog" data-backdrop="false">
+                    <div class="modal-dialog">
+                        <!-- Modal Content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Sign up</h4>
+                            </div>
+                            <div class="modal-body">
+                                {% if erro_registo_username %}
+                                <p style="color:red;">ERRO: Username já existe.</p>
+                                {% endif %}
+                                {% if erro_registo_password %}
+                                <p style="color:red;">ERRO: Passwords diferentes.</p>
+                                {% endif %}
+                                <form method="POST" action="{% url 'base' %}">
+                                    {% csrf_token %}
+                                    <label>Username:</label>
+                                    <input type="text" name="registo_username">
+                                    <br><br>
+                                    <label>Email:</label>
+                                    <input type="text" name="registo_email">
+                                    <br><br>
+                                    <label>Password:</label>
+                                    <input type="password" name="registo_password">
+                                    <br><br>
+                                    <label>Confirmar Password:</label>
+                                    <input type="password" name="registo_confirmar_password">
+                                    <br><br>
+                                    <input type="submit" class="btn btn-success" value="Registar"/>
+                                    <a class="btn btn-danger" href="{% url 'index' %}">Cancelar</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#about">About</a>
+                    <a href="#event" class="eventBtn">Event</a>
+                    <a id="menubtt" href="#menu">Menu</a>
+                    {% block opcoes_cliente %}
+                    {% endblock %}
+                    {% block opcoes_administrador %}
+                    {% endblock %}
+                    {% block banner_dados_utilizador %}
+                    {% endblock %}
+                </div>
+                <!-- Use any element to open the sidenav -->
+                <span onclick="openNav()" class="pull-right menu-icon">☰</span>
+            </div>
+        </header>
+        <div class="container">
+            <div id="banner-text" class="row">
+                <div class="inner text-center">
+                    <h1 class="logo-name">!Veggie</h1>
+                    <h2>Food To fit your chicken & wings. #!veggie</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block bem_vindo %}
+{% endblock %}
+
+{% block body %}
+<!--about-->
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center marb-35">
+                <h1 class="header-h">Meatyc Journey</h1>
+                <p class="header-p"> Give us the chance to succeed, we will give you an experience.
+                </p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-info">
+                        <h2 class="heading">Chicken Wings</h2>
+                        <p>Come and taste our super hot, super trendy, and super cheap Chicken Wings</p>
+                        <div class="details-list">
+                            <ul>
+                                <li><i class="fa fa-check"></i>Vegetarian Chicken Wings (not)
+                                </li>
+                                <li><i class="fa fa-check"></i>Pork Chicken Wings</li>
+                                <li><i class="fa fa-check"></i>Calf Chicken Wings</li>
+                                <li><i class="fa fa-check"></i>and much more to expect... like Chicken Chicken Wings
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img src="{% static 'img/res01.jpg' %}" alt="" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+<!--/about-->
+<!-- event -->
+<section id="event">
+
+</section>
+
+<!-- event normal -->
+<section id="event-normal">
+    <div class="bg-color" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center" style="padding:60px;">
+                    <h1 class="header-h">Up Coming events</h1>
+                    <p class="header-p">Decorations 100% complete here</p>
+                </div>
+                <div class="col-md-12" style="padding-bottom:60px;">
+                    <div class="item active left">
+                        <div class="col-md-6 col-sm-6 left-images">
+                            <img src="{% static 'img/rest' %}.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-6 col-sm-6 details-text">
+                            <div class="content-holder">
+                                <h2>Joyful party</h2>
+                                <p>Free chicken wings for everybody that shows up 30 minutes before the event starts..
+                                    to build up the decorations.</p>
+                                <address>
+                                    <strong>Place: </strong>
+                                    Electronic and Telecommunications Department of the University of Aveiro, Amph. IV
+                                    <br>
+                                    <strong>Time: </strong>
+                                    19:30
+                                </address>
+                                <button type="button" id="event-normal-btn" class="btn btn-imfo btn-read-more">Read
+                                    more
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--/ event normal -->
+<!-- event read more -->
+<section id="event-readmore">
+    <div class="bg-color" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center" style="padding:60px;">
+                    <h1 class="header-h">Joyful Party</h1>
+                </div>
+                <div class="col-md-12" style="padding-bottom:60px;">
+                    <div class="item active left">
+                        <div class="col-md-12 col-sm-12 details-text">
+                            <div class="content-holder">
+                                <h2>What is happening?</h2>
+                                <p>
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts..
+                                    to build up the decorations.
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts..
+                                    to build up the decorations.
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts..
+                                    to build up the decorations.
+                                    Free chicken wings for everybody that shows up 30 minutes before the event starts..
+                                    to build up the decorations.
+                                </p>
+                                <h2>Where is it?</h2>
+                                <p>Electronic and Telecommunications Department of the University of Aveiro, Amph.
+                                    IV</p>
+                                <h2>When is it?</h2>
+                                <p>Next Saturday, 7th April, at 19h30</p>
+                                <button type="button" id="readmore-btn" class="btn btn-imfo btn-read-more"
+                                        align="right">Ok
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- / event read more -->
+<!-- / event -->
+
+{% endblock %}
+
+{% block menu %}
+<!-- menu -->
+<section id="menu" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center marb-35">
+                <h1 class="header-h">Menu List</h1>
+                <p class="header-p">
+                    Chicken Wings from all types of meat.
+                </p>
+                <h4 id="client-discount-text" align="center"></h4>
+            </div>
+        </div>
+        <div id="menulist" class="row">
+            <table id="tabela_pratos" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                </tr>
+                </thead>
+                <tbody id="tabela_pratos_tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!--/ menu -->
+{% endblock %}
+
+{% block minhas_reservas %}
+{% endblock %}
+
+{% block lista_reservas %}
+{% endblock %}
+
+{% block reservar_mesa %}
+{% endblock %}
+
+{% block contact %}
+{% endblock %}
+
+
+{% block reservations %}
+{% endblock %}
+
+{% block user-account-settings %}
+{% endblock %}
+
+{% block footer %}
+<!-- footer -->
+<footer class="footer text-center">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="media-2">
+                        <div class="media-left">
+                            <div class="contact-phone bg-1 text-center">
+                                <span class="phone-in-talk fa fa-phone"></span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="dark-blue regular">Phone Number</h4>
+                            <p class="light-blue regular alt-p">
+                                234 000 000
+                            </p>
+                        </div>
+                    </div>
+                    <div class="media-2">
+                        <div class="media-left">
+                            <div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="dark-blue regular">Opening Hours</h4>
+                            <p class="light-blue regular alt-p"> Monday to Thursday 09.00 - 24:00</p>
+                            <p class="light-blue regular alt-p">
+                                Friday and Sunday 10:00 - 01.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 text-center">
+                    <div class="widget">
+                        <h4 class="widget-title">!Veggie</h4>
+                        <address>Departamento de Electrónica, Telecomunicações e Informática<br>Aveiro, Portugal
+                        </address>
+                        <div class="social-list">
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- / footer -->
+{% endblock %}
+
+{% block getdata %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        switchEventContentToNormal();
+        $("#event-normal").hide();
+        $("#event-readmore").hide();
+        {% block getReservationsData_call %}
+        {% endblock %}
+        {% if open_login_modal %}
+        $("#myModal").modal("show");
+        {% endif %}
+        {% if open_signup_modal %}
+        $("#myModal1").modal("show");
+        {% endif %}
+    });
+
+    {% block getReservationsData %}
+    {% endblock %}
+
+    $(document).ready(function () {
+        getMenuData();
+    });
+
+    function getMenuData() {
+            var strURL = "http://127.0.0.1:8000/pratos/";
+            $.ajax({
+                url: strURL,
+                type: "GET",
+                dataType: "json",
+                success: processPratosDataJson,
+                error: processPratosDataJsonError
+            });
+        };
+
+
+    {% block scripts_cliente %}
+    function processPratosDataJson(result, status, xhr) {
+        var tabela = document.getElementById("tabela_pratos_tbody");
+        for (var i in result) {
+            var row = tabela.insertRow(i);
+            var cell_nome = row.insertCell(0);
+            var cell_preco = row.insertCell(1);
+            cell_nome.innerHTML = result[i].nome;
+            cell_preco.innerHTML = "€" + result[i].preco;
+        }
+    };
+    {% endblock %}
+
+    function processPratosDataJsonError(xhr, status, errorThrown) {
+        alert("Error loading pratos json");
+    };
+
+    {% block scripts_administrador %}
+
+    {% endblock %}
+
+
+
+    function processDataJsonError(xhr, status, errorThrown) {
+        alert("Error loading json");
+    };
+
+
+
+    function openSignupModal() {
+        $("#myModal").modal('hide');
+        $("#myModal1").modal("show");
+    }
+
+    $(document).on("click", "#event-normal-btn", function (event) {
+        switchEventContentToReadmore();
+    });
+
+    $(document).on("click", "#readmore-btn", function (event) {
+        switchEventContentToNormal();
+    });
+
+    var modal = document.getElementById('myModal');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    // Altera o conteudo da section Event para o normal
+
+    function switchEventContentToNormal() {
+        var content = $("#event-normal").html();
+        $("#event").empty();
+        $("#event").append(content);
+    }
+
+    // Altera o conteudo da section Event para uma vista personalizada do evento em questão
+
+    function switchEventContentToReadmore() {
+        var content = $("#event-readmore").html();
+        $("#event").empty();
+        $("#event").append(content);
+    }
+
+
+    (function ($) {
+        var element = $('.follow-scroll'),
+            originalY = element.offset().top;
+
+        // Space between element and top of screen (when scrolling)
+        var topMargin = 20;
+
+        // Should probably be set in CSS; but here just for emphasis
+        element.css('position', 'relative');
+
+        $(window).on('scroll', function (event) {
+            var scrollTop = $(window).scrollTop();
+
+            element.stop(false, false).animate({
+                top: scrollTop < originalY
+                    ? 0
+                    : scrollTop - originalY + topMargin
+            }, 300);
+        });
+    })(jQuery);
+
+
+
+
+</script>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% extends './base.html' %}
+
+{% block titulo %} Administrador {% endblock %}
+
+{% block opcoes_administrador %}
+<hr>
+<a id="adminopt1" href="{% url 'criar_prato' %}">Criar Prato</a>
+<a href="#reservas">Reservas</a>
+<hr>
+<a onclick="Myfunction()" id="logout" href="{% url 'logout' %}">Log out</a>
+<hr>
+<p style="text-align:center;">{{ current_user }}</p>
+{% endblock %}
+
+{% block banner_dados_utilizador %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+
+{% block registo %}
+{% endblock %}
+
+{% block lista_reservas %}
+<!-- menu -->
+<section id="reservas" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center marb-35">
+                <h1 class="header-h">Reservations</h1>
+                <p class="header-p">
+                    Chicken Wings from all types of meat.
+                </p>
+                <h4 id="client-discount-text" align="center"></h4>
+            </div>
+        </div>
+        <div id="lista_reservas" class="row">
+            <table id="tabela_reservas" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Cliente</th>
+                    <th>Nº Lugares</th>
+                    <th>Contacto</th>
+                </tr>
+                </thead>
+                <tbody id="tabela_reservas_tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!--/ menu -->
+{% endblock %}
+
+{% block scripts_administrador %}
+    $(document).ready(function () {
+        getReservasData();
+    });
+
+    function getReservasData() {
+        var strURL = "http://127.0.0.1:8000/reservas/";
+        $.ajax({
+            url: strURL,
+            type: "GET",
+            dataType: "json",
+            success: processReservasDataJson,
+            error: processReservasDataJsonError
+        });
+    };
+
+    function processReservasDataJson(result, status, xhr) {
+        var tabela = document.getElementById("tabela_reservas_tbody");
+        for (var i in result) {
+            var row = tabela.insertRow(i);
+            var cell_data = row.insertCell(0);
+            var cell_hora = row.insertCell(1);
+            var cell_cliente= row.insertCell(2);
+            var cell_n_lugares = row.insertCell(3);
+            var cell_contacto = row.insertCell(4);
+            cell_data.innerHTML = result[i].data;
+            cell_hora.innerHTML = result[i].hora;
+            cell_cliente.innerHTML = result[i].cliente;
+            cell_n_lugares.innerHTML = result[i].n_lugares;
+            cell_contacto.innerHTML = result[i].contacto;
+        }
+    };
+
+    function processReservasDataJsonError(xhr, status, errorThrown) {
+        alert("Error loading reservas json");
+    };
+{% endblock %}
+

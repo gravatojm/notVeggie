@@ -1,0 +1,50 @@
+{% extends './cliente.html' %}
+
+{% block titulo %} Cliente {% endblock %}
+
+{% block login %} {% endblock %}
+{% block registo %} {% endblock %}
+{% block bem_vindo %} {% endblock %}
+{% block menu %} {% endblock %}
+
+{% block body %}
+<section id="contact" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="header-h">Add Menu Item</h1>
+            </div>
+        </div>
+        <div class="row msg-row">
+            <div class="col-md-12 col-sm-12">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="col-md-4 form-group">
+                        <label>Name</label>
+                        <input type="text" name="criar_prato_nome" class="form-control" placeholder=""
+                               data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Price</label>
+                        <input type="number" name="criar_prato_preco" class="form-control"
+                               data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 btnpad" align="right">
+                            <input id="button_criar_prato_confirmar" type="submit" class="btn btn-success"
+                                   value="Criar">
+                            <a class="btn btn-danger" href="{% url 'index' %}">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block getdata %}
+{% endblock %}
+{% block reservar_mesa %}
+{% endblock %}
+{% block minhas_reservas %}
+{% endblock %}

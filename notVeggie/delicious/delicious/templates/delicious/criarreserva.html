@@ -1,0 +1,61 @@
+{% extends './cliente.html' %}
+
+{% block titulo %} Criar Reserva {% endblock %}
+
+{% block login %} {% endblock %}
+{% block bem_vindo %} {% endblock %}
+{% block registo %} {% endblock %}
+{% block menu %} {% endblock %}
+
+{% block body %}
+<section id="contact" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="header-h">Book Your table</h1>
+                <p class="header-p">You don't need this but it's ok.
+                    <br>we are always empty. </p>
+            </div>
+        </div>
+        <div class="row msg-row">
+            <div class="col-md-12 col-sm-12">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="col-md-4 form-group">
+                        <label>Day</label>
+                        <input type="date" name="criar_reserva_data" class="form-control" placeholder=""
+                               data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Hour</label>
+                        <input type="time" name="criar_reserva_hora" class="form-control"
+                               data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Seats</label>
+                        <input type="number" name="criar_reserva_n_lugares" class="form-control"
+                               data-rule="required" data-msg="This field is required"/>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Contacto</label>
+                        <input type="number" name="criar_reserva_contacto" class="form-control" data-rule="required"
+                               data-msg="This field is required"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 btnpad" align="right">
+                            <input id="button_criar_reserva_confirmar" type="submit" class="btn btn-success"
+                                   value="Reservar">
+                            <a class="btn btn-danger" href="{% url 'index' %}">Cancelar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block reservar_mesa %}
+{% endblock %}
+{% block minhas_reservas %}
+{% endblock %}

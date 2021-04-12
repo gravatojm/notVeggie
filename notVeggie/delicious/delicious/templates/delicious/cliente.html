@@ -1,0 +1,113 @@
+{% extends './base.html' %}
+
+
+{% block titulo %} Cliente {% endblock %}
+
+{% load staticfiles %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+{% block opcoes_cliente %}
+<hr id="barrita"/>
+<a id="cliopt1" href="{% url 'criar_reserva' %}">Reservar Mesa</a>
+<hr id="barrita1"/>
+<a onclick="Myfunction()" id="logout" href="{% url 'logout' %}">Log out</a>
+{% endblock %}
+{% block banner_dados_utilizador %}
+<hr>
+<p style="text-align:center;">{{ current_user }}</p>
+{% endblock %}
+
+{% block banner_modals %}
+{% endblock %}
+
+{% block login %}
+{% endblock %}
+{% block registo %}
+{% endblock %}
+
+{% block menu %}
+<!-- menu -->
+<section id="menu" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center marb-35">
+                <h1 class="header-h">Menu List</h1>
+                <p class="header-p">
+                    Chicken Wings from all types of meat.
+                </p>
+                <h4 id="client-discount-text" align="center"></h4>
+            </div>
+        </div>
+        <div id="menulist" class="row">
+            <table id="tabela_pratos" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                </tr>
+                </thead>
+                <tbody id="tabela_pratos_tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<!--/ menu -->
+{% endblock %}
+
+{% block minhas_reservas %}
+<!-- menu -->
+<section id="minhas_reservas" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center marb-35">
+                <h1 class="header-h">My Reservations</h1>
+                <p class="header-p">
+                </p>
+                <h4 align="center"></h4>
+            </div>
+        </div>
+        <div id="minhas_reservas_lista" class="row">
+            <table style="width:100%">
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Nº Lugares</th>
+                    <th>Contacto</th>
+                </tr>
+                {% for r in minhas_reservas %}
+                <tr>
+                    <td>{{ r.data }}</td>
+                    <td>{{ r.hora }}</td>
+                    <td>{{ r.n_lugares }}</td>
+                    <td>{{ r.contacto }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</section>
+<!--/ menu -->
+{% endblock %}
+
+{% block reservar_mesa %}
+{% endblock %}
+
+{% block scripts_cliente %}
+    function processPratosDataJson(result, status, xhr) {
+        var tabela = document.getElementById("tabela_pratos_tbody");
+        for (var i in result) {
+            var row = tabela.insertRow(i);
+            var cell_nome = row.insertCell(0);
+            var cell_preco = row.insertCell(1);
+            cell_nome.innerHTML = result[i].nome;
+            cell_preco.innerHTML = "€" + (parseFloat(result[i].preco) - Math.round(parseFloat(result[i].preco) * 0.1));
+        }
+    };
+{% endblock %}

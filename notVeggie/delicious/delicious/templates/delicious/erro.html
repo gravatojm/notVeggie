@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+{% block titulo %} Erro {% endblock %}
+
+{% block login %} {% endblock %}
+{% block registo %} {% endblock %}
+{% block bem_vindo %} {% endblock %}
+{% block menu %} {% endblock %}
+
+{% block body %}
+<section id="contact" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="header-h">Não tem permissões para ver esta página.</h1>
+            </div>
+            <div class="col-md-12 text-center">
+                <a class="btn btn-default" href="{% url 'index' %}">Voltar</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block getdata %}
+{% endblock %}
+{% block reservar_mesa %}
+{% endblock %}

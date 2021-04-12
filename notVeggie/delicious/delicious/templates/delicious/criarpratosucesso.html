@@ -1,0 +1,19 @@
+{% extends './cliente.html' %}
+
+{% block titulo %} Cliente {% endblock %}
+
+{% block login %} {% endblock %}
+{% block registo %} {% endblock %}
+{% block menu %} {% endblock %}
+
+{% block body %}
+<h1>Criar Prato</h1>
+<p>Prato criado com sucesso</p>
+<p>Nome: {{ nome }}</p>
+<p>Preco: {{ preco }}</p>
+<form action="criarprato.html">
+    <input type="submit" value="OK"/>
+</form>
+{% endblock %}
+{% block getdata %}
+{% endblock %}
